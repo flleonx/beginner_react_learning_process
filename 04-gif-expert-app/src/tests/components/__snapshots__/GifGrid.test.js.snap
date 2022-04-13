@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test on <GifGrid /> It should show <GifGrid /> properly 1`] = `
+<Fragment>
+  <h3
+    className="animate__animated animate__fadeIn"
+  >
+    Fate Zero
+  </h3>
+  <p
+    className="animate__animated__flash"
+  >
+    Loading...
+  </p>
+  <div
+    className="card-grid"
+  />
+</Fragment>
+`;
+
+exports[`Test on <GifGrid /> It should show items when the images are loaded 1`] = `
+<Fragment>
+  <h3
+    className="animate__animated animate__fadeIn"
+  >
+    Fate Zero
+  </h3>
+  <div
+    className="card-grid"
+  >
+    <GifGridItem
+      id="ABC"
+      key="ABC"
+      title="Anything"
+      url="https://localhost/anything/img.gif"
+    />
+    <GifGridItem
+      id="123"
+      key="123"
+      title="Anything"
+      url="https://localhost/anything/img.gif"
+    />
+  </div>
+</Fragment>
+`;
