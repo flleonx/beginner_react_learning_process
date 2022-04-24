@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   ProductButtons,
   ProductCard,
@@ -23,7 +24,28 @@ const product2 = {
 
 const products: Product[] = [product1, product2];
 
+interface ProductInCart extends Product {
+  count: number;
+}
+
 export const ShoppingPage = () => {
+  // NOTE:
+  // About the generic's input:
+  /*
+    Interpretation: Any number of keys that have assigned
+    the following types/interface
+  */
+  const [shoppingCart, setShoppingCart] = useState<{
+    [key: string]: ProductInCart;
+  }>({
+    "1": { ...product1, count: 10 },
+    "2": { ...product1, count: 1 },
+  });
+
+  const onProductCountChange = ({ count, product }: { count: number, product: Product }) => {
+    console.log('onProductCountChange', count, product);
+  };
+
   return (
     <div>
       <h1>Shopping Store</h1>
@@ -40,6 +62,7 @@ export const ShoppingPage = () => {
             key={product.id}
             product={product}
             className="bg-dark text-white"
+            onChange={onProductCountChange}
           >
             <ProductImage
               className="custom-image"
@@ -57,7 +80,20 @@ export const ShoppingPage = () => {
         <ProductCard
           product={product2}
           className="bg-dark text-white"
-          style={{ width: '100px' }}
+          style={{ width: "100px" }}
+        >
+          <ProductImage
+            className="custom-image"
+            style={{
+              boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
+            }}
+          />
+          <ProductButtons className="custom-buttons" />
+        </ProductCard>
+        <ProductCard
+          product={product1}
+          className="bg-dark text-white"
+          style={{ width: "100px" }}
         >
           <ProductImage
             className="custom-image"
